@@ -1,0 +1,49 @@
+{% load static %}
+
+<section class=" px-4 2xl:px-0 h-fit py-8 xl:py-0 xl:h-screen flex font-body items-center about-us" id="About">
+    <div class="max-w-screen-xl  mx-auto mt-40  lg:flex lg:items-center lg:justify-between lg:gap-8 lg:mt-16">
+        <div class="lg:w-1/2">
+            <p class="text-lg font-semibold tracking-wide text-white mb-2 flex items-center  md:slide-right">
+                <i class="text-white fa fa-angle-double-right mr-2"></i>About us
+            </p>
+            <h2 class=" text-white text-2xl font-title tracking-wider font-bold mb-2 xl:text-5xl xl:leading-tight  md:slide-right">
+              {{about.title}}
+            </h2>
+            <p class="text-gray-300 text-base leading-relaxed mb-6 md:slide-up">
+              {{about.description}}
+            </p>
+            <hr class="border-t-2 border-dashed my-4 border-secondary xl:my-10"/>
+            <div class="flex items-center flex-col gap-6 lg:flex-row">
+              <div class="flex items-center  md:slide-right">
+                <img
+                  src="{{about.admin_image.url}}"
+                  alt="Profile Image"
+                  class="rounded-full w-12 h-12 mr-4"
+                />
+                <div>
+                  <p class="font-bold text-xl text-secondary" style="font-family: 'Oleo Script Swash Caps', cursive;">{{about.admin_name}}</p>
+                  <p class="text-sm text-white">{{about.position}}</p>
+                </div>
+              </div>
+              <a
+                href="{% url 'index' %}#Insurance"
+                class=" bg-secondary hover:bg-primary text-lg tracking-wider text-white font-semibold py-5 px-14 rounded-full transition xl:ml-auto  md:slide-left"
+              >
+                Find Insurance
+              </a>
+            </div>
+          </div>
+        
+          <!-- Right Section -->
+          <div class="mt-8 lg:mt-0 lg:w-1/2 relative justify-center hidden lg:flex  zoom-in">
+
+            <div class="bg-cover bg-center bg-no-repeat about-img-conatainer w-5/6 relative z-30  zoom-in" style="background-image: url({{about.image.url}});"></div>
+            <div
+              class=" absolute -top-3 left-7 xl:-top-3 xl:left-10 w-1/2 h-64  bg-secondary rounded-lg rounded-tl-none"
+            ></div>
+            <div
+            class=" absolute -bottom-3 right-7 xl:-bottom-3 xl:right-10 w-1/2 h-64  bg-secondary rounded-lg rounded-br-none "
+          ></div>
+          </div>
+    </div>
+</section>

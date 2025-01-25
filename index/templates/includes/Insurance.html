@@ -1,0 +1,52 @@
+<section class=" px-4 2xl:px-0 mt-20 font-body" id="Insurance">
+    <div class="max-w-screen-xl  mx-auto ">
+        <p class="text-lg font-semibold tracking-wide  text-secondary mb-2 flex items-center">
+            <i class="text-secondary fa fa-angle-double-right mr-2"></i>Insurance
+        </p>
+        <h2 class=" text-primary text-3xl tracking-wide font-title leading-snug  font-extrabold mb-2 xl:text-5xl ">
+            Better Insurance For Everyone
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-6  justify-between">
+            {% for item in insurance %}
+            <div class="relative insuraceCard w-full bg-cover bg-center h-full bg-[#F4F5F9] bg-no-repeat group p-6 hover:bg-blend-overlay hover:bg-gray-700 transition-all duration-500 ease-in-out zoom-in" data-bg="{{ item.image.url }}">
+                <div class="h-44 bg-gray-400 z-40 top-16 left-0 w-1.5 absolute group-hover:h-full group-hover:top-0 group-hover:bg-secondary transition-all duration-500 ease-in-out"></div>
+                <div class="flex flex-row justify-between items-center">
+                    <h3 class="text-2xl font-bold w-1/3 tracking-wide  group-hover:text-white text-primary mb-2 transition-all duration-500 ease-in-out">{{ item.title }}</h3>
+                    <div class="">
+                        <div class="h-1.5 bg-[#ccb1017c] border-secondary group-hover:bg-secondary transition-all duration-500 ease-in-out"></div>
+                        <p class="text-stroke text-white text-5xl font-extrabold tracking-wide transition-all duration-500 ease-in-out">0{{ forloop.counter }}</p>
+                    </div>
+                </div>
+                <p class="text-base leading-normal text-body mt-6 group-hover:text-white transition-all duration-500 ease-in-out">{{ item.description }}</p>
+                <div class="flex flex-row justify-between items-center mt-6">
+                    <a href="{% url 'index' %}#Contact" target="_blank" class="text-primary flex flex-row gap-2 items-center justify-center font-bold group-hover:text-white transition duration-300 ease-in-out">
+                            Know More<i class='fas fa-arrow-right'></i>
+                    </a>
+                    <img class="w-12 ml-4 transition duration-500 ease-in-out group-hover:hidden" src="{{item.icon.url}}" alt="hero image">
+                    <img class="w-12 ml-4 hidden transition duration-500 ease-in-out group-hover:block" src="{{item.icon2.url}}" alt="hero image">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+
+    <script>
+        const insuranceCards = document.querySelectorAll('.insuraceCard');
+        insuranceCards.forEach((card) => {
+            // Store the original background color or style
+            const originalBgColor = card.style.backgroundColor;
+    
+            // Set the background image on hover
+            card.addEventListener('mouseenter', () => {
+                card.style.backgroundImage = `url(${card.dataset.bg})`;
+            });
+    
+            // Revert to original style when mouse leaves
+            card.addEventListener('mouseleave', () => {
+                card.style.backgroundImage = ''; // Remove the background image on hover out
+                card.style.backgroundColor = originalBgColor; // Optional: revert background color if desired
+            });
+        });
+    </script>
+    

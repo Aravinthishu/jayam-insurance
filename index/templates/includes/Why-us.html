@@ -1,0 +1,197 @@
+{% load static %}
+
+<style>
+    .progress-bar {
+        transition: width 2s ease-out;
+    }
+</style>
+
+<section class="px-4 2xl:px-0 mt-20 font-body bg-cover h-fit pt-28 pb-28 md:pb-56 bg-primary relative"  id="Why-us">
+    <div class="max-w-screen-xl  mx-auto flex flex-col md:flex-row gap-6 z-20 relative ">
+        <div class="w-full md:w-1/2">
+            <p class="text-lg font-semibold tracking-wide  text-secondary mb-2 flex items-center">
+                <i class="text-secondary fa fa-angle-double-right mr-2"></i>Why are we
+            </p>
+            <h2 class=" text-white text-3xl font-title tracking-wider leading-snug  font-bold mb-2 xl:text-5xl">
+                Mile After mile, We've Got You Covered
+            </h2>
+            <p class="text-white text-base mt-4">
+                Proin vehicula eu augue quis gravida. Maecenas quis aliquam diam lore. Etiam hendrerit aliquam ex, vel ultrices turpis consequat quis.
+                Vivamuse ed venenatis mattis faucibus porta purus sit amet auctor.
+            </p>
+            <div class="mt-14  md:slide-right">
+                <div class="mt-5">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-white">Insurance Product Knowledge</span>
+                        <span id="insurancePercentage" class="text-base font-medium text-white">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="insuranceBar" class="bg-secondary progress-bar h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="mt-7">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-white">Risk Assessment</span>
+                        <span id="riskPercentage" class="text-base font-medium text-white">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="riskBar" class="bg-secondary progress-bar h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="mt-7">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-white">Customer Service</span>
+                        <span id="customerServicePercentage" class="text-base font-medium text-white">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="customerServiceBar" class="bg-secondary progress-bar h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="w-full md:w-1/2 flex-col flex justify-center items-center relative zoom-in">
+            <div class="w-full 2xl:w-5/6 h-80 mt-8 rounded-xl bg-no-repeat bg-cover relative z-10 " style="background-image: url('{% static 'images/indian-corporate-team.jpg' %}');"></div>
+            <div class="flex justify-around gap-6 items-center mt-4">
+                <div class="">
+                    <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients1" class="text-white">0</h3>+</span>
+                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy Clients</span>
+                </div>
+                <div class="">
+                    <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients2" class="text-white">0</h3>%</span>
+                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy Clients</span>
+                </div>
+                <div class="">
+                    <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients3" class="text-white">0</h3>+</span>
+                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy Clients</span>
+                </div>
+
+            </div>
+                      
+            <div class=" absolute top-0 right-2  w-3/6 h-48  bg-secondary rounded-lg "
+            ></div>
+        </div>
+    </div>
+</section>
+
+<section class="px-4 2xl:px-0   relative hidden font-body  lg:block">
+    <div class="2xl:w-8/12 md:w-11/12 lg:w-11/12 mx-auto bg-secondary  flex flex-col justify-between items-center px-16 py-12 rounded-xl absolute md:left-10 xl:left-12 2xl:left-80 -top-20 md:flex-row gap-6  ">
+        <div class="flex items-center gap-3 w-full md:w-1/3">
+            <i class="fas fa-phone text-white text-5xl font-bold"></i><h3 class="font-semibold text-xl text-white">Call for More Info<br>
+                <span class="2xl:text-3xl md:text-2xl text-white font-semibold">+123-234-1234</span>
+            </h3>  
+        </div>
+        <div class="w-full md:w-1/3">
+            <h2 class="text-white font-bold text-center md:text-xl 2xl:text-2xl">
+                Get Peace of Mind on the Road Request Your Quote
+            </h3>
+        </div>
+        <div class="w-full md:w-1/3  flex justify-end items-end">
+            <a href="{% url 'index' %}#Contact">
+                <button class="bg-primary rounded-full px-8 py-4 text-center text-white transition duration-100 border-2 border-primary hover:bg-white hover:text-primary font-semibold">Contact us</button>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    // Function to animate progress bar
+    function animateProgressBar(elementId, targetValue) {
+        let current = 0;
+        const percentageElement = document.getElementById(elementId);
+        const barElement = document.getElementById(elementId.replace('Percentage', 'Bar'));
+        
+        const interval = setInterval(() => {
+            if (current < targetValue) {
+                current++;
+                percentageElement.textContent = `${current}%`;
+                barElement.style.width = `${current}%`;
+            } else {
+                clearInterval(interval);
+            }
+        }, 30); // Adjust the speed of animation by changing the interval (in milliseconds)
+    }
+
+    // Intersection Observer to detect when the element is in view
+    const option = {
+        root: null, // Relative to the viewport
+        rootMargin: '0px',
+        threshold: 0.5 // Trigger when 50% of the element is in view
+    };
+
+    // Create an IntersectionObserver instance for progress bar
+    const progressObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start the progress bar animation when the element is in view
+                if (entry.target.id === "insuranceBar") {
+                    animateProgressBar('insurancePercentage', 95);
+                } else if (entry.target.id === "riskBar") {
+                    animateProgressBar('riskPercentage', 90);
+                } else if (entry.target.id === "customerServiceBar") {
+                    animateProgressBar('customerServicePercentage', 97);
+                }
+                // Stop observing after animation starts
+                observer.unobserve(entry.target);
+            }
+        });
+    }, option);
+
+    // Observe the progress bar elements
+    document.addEventListener("DOMContentLoaded", () => {
+        progressObserver.observe(document.getElementById('insuranceBar'));
+        progressObserver.observe(document.getElementById('riskBar'));
+        progressObserver.observe(document.getElementById('customerServiceBar'));
+    });
+</script>
+
+<script>
+    // Function to animate the count
+    function animateCount(elementId, targetValue) {
+        let current = 0;
+        const element = document.getElementById(elementId);
+        
+        const interval = setInterval(() => {
+            if (current < targetValue) {
+                current++;
+                element.innerHTML = `${current}`;
+            } else {
+                clearInterval(interval);
+            }
+        }, 40); // Adjust the speed of animation by changing the interval (in milliseconds)
+    }
+
+    // Intersection Observer to detect when the element is in view
+    const options = {
+        root: null, // Relative to the viewport
+        rootMargin: '0px',
+        threshold: 0.5 // Trigger when 50% of the element is in view
+    };
+
+    // Create an IntersectionObserver instance for count animation
+    const countObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start the count animation when the element is in view
+                if (entry.target.id === "happyClients1") {
+                    animateCount('happyClients1', 100);
+                } else if (entry.target.id === "happyClients2") {
+                    animateCount('happyClients2', 99);
+                } else if (entry.target.id === "happyClients3") {
+                    animateCount('happyClients3', 100);
+                }
+                // Stop observing after animation starts
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    // Observe each element with the count animation
+    document.addEventListener("DOMContentLoaded", () => {
+        countObserver.observe(document.getElementById('happyClients1'));
+        countObserver.observe(document.getElementById('happyClients2'));
+        countObserver.observe(document.getElementById('happyClients3'));
+    });
+</script>
+

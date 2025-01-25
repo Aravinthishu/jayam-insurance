@@ -1,0 +1,54 @@
+{% load static %}
+
+
+<section class="px-4 2xl:px-0 mt-20 py-16 font-body bg-[#f5bf1c10]" id="Insurance">
+    <div class="max-w-screen-xl mx-auto overflow-hidden">
+        <h3 class="text-xl text-center text-primary  font-extrabold">Trusted and funded by more then <span class="text-secondary">100+</span> companies</h3>
+        <div class="swiper-container-logo mt-12">
+            <div class="swiper-wrapper">
+                {% for logo in logos %}
+                <div class="swiper-slide">
+                    <div class="rounded-lg p-4 flex justify-center items-center w-full max-w-[200px] h-[100px]">
+                        <img src="{{ logo.logo.url }}" alt="logo" class="object-contain w-full h-full">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper-container-logo", {
+            slidesPerView: 3, // Default for larger screens
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 1000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true, // Pause autoplay when hovering over Swiper
+            },
+
+            breakpoints: {
+                // When the screen width is <= 768px
+                1280: {
+                    slidesPerView: 6, // Show only one slide for smaller screens
+                    spaceBetween: 10, // Reduce space between slides
+                },
+                1024: {
+                    slidesPerView: 4, // Show only one slide for smaller screens
+                    spaceBetween: 10, // Reduce space between slides
+                },
+                600: {
+                    slidesPerView: 3, // Show only one slide for smaller screens
+                    spaceBetween: 10, // Reduce space between slides
+                },
+
+            },
+        });
+    });
+</script>

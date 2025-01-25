@@ -1,0 +1,64 @@
+{% load static %}
+
+
+<section class="font-body mt-20 px-4 md:px-4 2xl:px-0" id="Certificate">
+    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row gap-6">
+        <!-- Heading and Navigation Buttons -->
+        <div class="w-full md:w-5/12  slide-right relative">
+            <p class="text-lg font-semibold tracking-wide text-secondary flex items-center">
+                <i class="text-secondary fa fa-angle-double-right mr-2"></i>Certificates
+            </p>
+            <h2 class=" text-primary text-3xl tracking-wider leading-snug font-title font-bold mb-2 xl:text-5xl ">
+                Explore Our <span class="text-secondary">Certificates</span> and <span class="text-secondary">Awards</span>
+            </h2>
+            <!-- Swiper Navigation Buttons -->
+            <div class=" flex gap-6 justify-start w-full mt-6">
+                <button class="button-prev bg-white border border-primary rounded-md text-primary hover:border-secondary hover:text-secondary py-2 px-4 "><i class="fa fa-arrow-left"></i></button>
+                <button class="button-next bg-white border border-primary rounded-md text-primary hover:border-secondary hover:text-secondary py-2 px-4"><i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="w-full md:w-7/12 overflow-hidden  slide-left">
+            <div class="swiper-container-award">
+                <div class="swiper-wrapper">
+                    {% for certificate in certificates %}
+                    <div class="swiper-slide border  border-gray-300">
+                        <div
+                            class="award-box bg-white  text-primary h-full items-stretch   p-3 transition-all duration-300 cursor-pointer hover:border-secondary group ">
+                            <img class="w-full h-40 object-cover" src="{{certificate.image.url}}">
+                            <p class="text-lg text-center text-secondary mt-4">Year<span class="text-body mx-2">{{certificate.year}}</span></p>
+                            <h3 class="text-lg text-primary text-center font-semibold">{{certificate.name}}</h3>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper-container-award", {
+            slidesPerView: 1, // Default for larger screens
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".button-next",
+                prevEl: ".button-prev",
+            },
+            breakpoints: {
+                // When the screen width is <= 768px
+                1024: {
+                    slidesPerView: 3, // Show only one slide for smaller screens
+                    spaceBetween: 10, // Reduce space between slides
+                },
+            },
+        });
+    });
+</script>

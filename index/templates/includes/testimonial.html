@@ -1,0 +1,89 @@
+{% load static%}
+
+
+
+<section class="px-4 2xl:px-0 mt-20 md:mt-40 font-body" id="Testimonial">
+    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between gap-6">
+        <!-- Outer div with spinning border -->
+        <div class=" relative flex justify-center items-center testimonial-circle zoom-in">
+            <!-- Spinning border div -->
+            <div class="rounded-full border-2 w-full h-full border-dashed spinning-circle border-secondary animat-spin p-12">
+                <!-- Inner content that doesn't spin -->
+                <div class="rounded-full w-full h-full relative p-12 bg-blue-50">
+                    <div class="rounded-full w-8 h-8 absolute top-7 bg-[#FF474A]">
+
+                    </div>
+                    <div class="rounded-full w-8 h-8 absolute bottom-7 bg-[#F1C514]">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="rounded-full w-60 h-60 bg-no-repeat bg-cover absolute"
+            style="background-image: url('{% static 'images/testimonial.jpg' %}')">
+            </div>
+        </div>
+        <div class="w-full md:w-1/2 overflow-hidden">
+            <p class="text-lg font-semibold tracking-wide text-secondary flex items-center ">
+                <i class="text-secondary fa fa-angle-double-right mr-2"></i>Testimonials
+            </p>
+            <h2 class=" text-primary text-3xl tracking-wide leading-relaxed font-title font-bold mb-2 xl:text-5xl xl:leading-relaxed">
+                What Our Customers Says
+            </h2>
+            <p class="font-body text-body text-base">
+                Facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eldi optio cumque nihil impedit quo minus id quod maxime placeat facere.
+            </p>
+            <div class="swiper-container-testimonial mt-10 md:mt-4">
+                <div class="swiper-wrapper">
+                    {% for testimonial in testimonials %}
+                    <div class="swiper-slide">
+                        <div class="flex gap-4 items-center">
+                            <img src="{{testimonial.image.url}}" class="w-16 h-16 rounded-full">
+                            <div class="">
+                                <h5 class="text-lg font-semibold text-black">
+                                    {{testimonial.name}}
+                                </h5>
+                                <h6 class="text-sm font-medium text-body">
+                                    {{testimonial.position}}
+                                </h6>
+                            </div>
+                        </div>
+                        <div
+                            class="testimonial-box relative bg-white mt-8 shadow-md border border-gray-100 shadow-gray-200 px-6 py-8 transition-all duration-300 cursor-pointer hover:border-secondary group ">
+                            <p class="text-base font-medium text-gray-800 text-center lg:text-start">{{ testimonial.testimonial }}</p>
+                            <div class="w-16 h-16 bg-secondary absolute flex justify-center items-center rounded-full -top-10 right-10 text-white">
+                                <img class="w-10 h-10" src="{% static 'images/quote.png' %}">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper-container-testimonial", {
+            slidesPerView: 1, // Default for larger screens
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true, // Pause autoplay when hovering over Swiper
+            },
+
+            breakpoints: {
+                // When the screen width is <= 768px
+                1024: {
+                    slidesPerView: 1, // Show only one slide for smaller screens
+                    spaceBetween: 10, // Reduce space between slides
+                },
+            },
+        });
+    });
+</script>
