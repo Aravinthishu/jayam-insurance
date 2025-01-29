@@ -5,8 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jayam Insurance - Providing the best insurance solutions for you">
+    <meta name="keywords" content="insurance, health insurance, life insurance, car insurance, home insurance, vehicle insurance, health insurance near me, auto insurance">
+    <meta name="author" content="Jayam Insurance">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags (for social sharing) -->
+    <meta property="og:title" content="Jayam Insurance">
+    <meta property="og:description" content="Jayam Insurance offers a wide range of insurance options tailored to meet your needs">
+    <meta property="og:image" content="{{brand.logo.url}}">
+    <meta property="og:url" content="https://www.jayaminsurance.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jayam Insurance">
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{{brand.fevicon.url}}" type="image/x-icon">
+
+    <!-- Title -->
     <title>{% block title %}Jayam Insurance{% endblock %}</title>
-    <link href="{% static 'css/Output.css' %}" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link href="{% static 'css/outputs.css' %}" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -15,12 +37,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;700&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
 
-
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-
-    
     {% block extra_head %}
     <!-- Optional block for extra head content -->
     {% endblock %}
@@ -38,12 +58,9 @@
     <!-- Footer Section -->
     {% include 'includes/footer.html' %}
 
-
     {% block extra_js %}
     <!-- Optional block for extra JS files -->
-     {% endblock %}
+    {% endblock %}
 
-
-    
 </body>
 </html>

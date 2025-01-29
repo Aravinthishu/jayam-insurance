@@ -107,8 +107,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "npx tailwindcss build static/css/styles.css -o static/css/Output.css",
-    "watch:css": "npx tailwindcss build static/css/styles.css -o static/css/Output.css --watch"
+    "build:css": "npx tailwindcss build static/css/styles.css -o static/css/outputs.css",
+    "watch:css": "npx tailwindcss build static/css/styles.css -o static/css/outputs.css --watch"
   },
   "keywords": [],
   "author": "",

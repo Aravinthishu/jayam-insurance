@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(4@93k!*d#^iu&728f6=02uo!kr^mvs0+4vh=nm%9o5z$@a!20'
+
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -134,6 +136,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # Path to store media files
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Email configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER_NAME=config('EMAIL_HOST_USER_NAME')
+ADMIN_EMAIL=config('ADMIN_EMAIL')
+ADMIN_EMAIL2=config('ADMIN_EMAIL2')
+
+#Jazzmin Settings
 
 JAZZMIN_SETTINGS = {
     "site_title": "Jayam Insurance",  # Title of the admin site

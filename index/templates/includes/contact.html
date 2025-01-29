@@ -1,6 +1,30 @@
 {% load static %}
 
 <section class="px-4 2xl:px-0 mt-20 py-16 md:py-28 font-body bg-[#F4F5F9]" id="Contact">
+    <div class="max-w-screen-xl mx-auto flex justify-between rounded-lg">
+        {% if messages %}
+        <div class="mb-8 space-y-2">
+            {% for message in messages %}
+                <div class="p-4 rounded-lg shadow-lg text-white flex justify-between items-center relative
+                    {% if message.tags == 'success' %} bg-green-600
+                    {% elif message.tags == 'error' %} bg-red-500 
+                    {% elif message.tags == 'warning' %} bg-yellow-500 
+                    {% elif message.tags == 'info' %} bg-blue-500 
+                    {% endif %}" 
+                    id="message-{{ forloop.counter }}">
+                    
+                    <span>{{ message }}</span>
+    
+                    <!-- Close Button -->
+                    <button class="ml-4 text-white hover:text-gray-300 focus:outline-none" 
+                            onclick="dismissMessage('message-{{ forloop.counter }}')">
+                            <i class="fa fa-times text-white "></i>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
     <div class="max-w-screen-xl mx-auto flex flex-col justify-between md:flex-row gap-6 rounded-lg">
         <div class="w-full md:w-1/2">
             <p class="text-lg font-semibold tracking-wide text-secondary flex items-center  md:slide-right">
@@ -9,27 +33,34 @@
             <h2 class="text-primary text-3xl tracking-wide slide-right leading-snug font-title font-bold mb-2 xl:text-5xl">
                 Get An Insurance Quote To Get Started
             </h2>
-            <form class="mt-8 slide-right">
-                <input class="p-6 rounded-lg w-full bg-white mb-4 " type="text" placeholder="Your Name">
-                <input class="p-6 rounded-lg w-full bg-white mb-4 " type="email" placeholder="Your Email">
-                <input class="p-6 rounded-lg w-full bg-white mb-4 " type="text" placeholder="Your Phone">
+            <p class="font-body text-body text-base">
+                Have questions or need assistance? Get in touch with us today to find the perfect insurance plan for you.
+            </p>
+            <form class="mt-8 slide-right" method="POST">
+                {% csrf_token %}
+                
+                <input class="p-6 rounded-lg w-full bg-white mb-4" type="text" name="name" placeholder="Your Name" required>
+                <input class="p-6 rounded-lg w-full bg-white mb-4" type="email" name="email" placeholder="Your Email" required>
+                <input class="p-6 rounded-lg w-full bg-white mb-4" type="text" name="phone" placeholder="Your Phone" required>
                 
                 <!-- Custom Select Dropdown -->
-                <div class="relative w-full ">
-                    <div class="custom-select p-6 rounded-lg bg-white  w-full flex justify-between items-center  cursor-pointer " id="custom-select">
+                <div class="relative w-full">
+                    <div class="custom-select p-6 rounded-lg bg-white w-full flex justify-between items-center cursor-pointer" id="custom-select">
                         <span id="selected-option" class="text-gray-400 font-medium">Select</span>
                         <i class="fa fa-chevron-down"></i>
                     </div>
                     <ul class="custom-options hidden p-6 absolute w-full bg-white border border-gray-200 rounded-lg mt-1 z-10">
                         <li class="option p-3 hover:bg-gray-100 cursor-pointer" data-value="life">Life Insurance</li>
-                        <li class="option p-3 hover:bg-gray-100 cursor-pointer" data-value="car">Car Insurance</li>
+                        <li class="option p-3 hover:bg-gray-100 cursor-pointer" data-value="car">Car Insurance(MOTOR)</li>
                         <li class="option p-3 hover:bg-gray-100 cursor-pointer" data-value="health">Health Insurance</li>
                         <li class="option p-3 hover:bg-gray-100 cursor-pointer" data-value="home">Home & Industrial Insurance</li>
+                        <li class="option p-3 hover:bg-gray-100 cursor-pointer" data-value="fire">Fire Insurance</li>
+                        <li class="option p-3 hover:bg-gray-100 cursor-pointer" data-value="travel">Transit Insurance</li>
                     </ul>
                 </div>
                 
-                <input type="hidden" id="insurance-type" name="insurance-type">
-                
+                <input type="hidden" id="insurance-type" name="insurance_type" required>
+            
                 <button class="bg-primary text-lg font-body text-white py-3 w-full md:w-1/3 mt-6 rounded-full hover:bg-secondary transition ease-in-out duration-300">
                     Get a Quote
                 </button>
@@ -51,29 +82,39 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const customSelect = document.getElementById("custom-select");
-        const optionsContainer = document.querySelector(".custom-options");
+        const selectBox = document.getElementById("custom-select");
+        const optionsList = document.querySelector(".custom-options");
         const selectedOption = document.getElementById("selected-option");
         const hiddenInput = document.getElementById("insurance-type");
-    
-        customSelect.addEventListener("click", () => {
-            optionsContainer.classList.toggle("hidden");
+
+        selectBox.addEventListener("click", () => {
+            optionsList.classList.toggle("hidden");
         });
-    
+
         document.querySelectorAll(".option").forEach(option => {
             option.addEventListener("click", function () {
                 selectedOption.textContent = this.textContent;
                 hiddenInput.value = this.getAttribute("data-value");
-                optionsContainer.classList.add("hidden");
+                optionsList.classList.add("hidden");
             });
         });
-    
-        // Close dropdown if clicked outside
-        document.addEventListener("click", (e) => {
-            if (!customSelect.contains(e.target)) {
-                optionsContainer.classList.add("hidden");
+
+        document.addEventListener("click", function (e) {
+            if (!selectBox.contains(e.target) && !optionsList.contains(e.target)) {
+                optionsList.classList.add("hidden");
             }
         });
     });
+</script>
 
+<script>
+    function dismissMessage(id) {
+        let messageBox = document.getElementById(id);
+        if (messageBox) {
+            messageBox.style.opacity = "0";
+            setTimeout(() => {
+                messageBox.remove();
+            }, 300); // Smooth transition before removing
+        }
+    }
 </script>

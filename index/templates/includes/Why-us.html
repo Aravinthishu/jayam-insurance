@@ -15,11 +15,13 @@
             <h2 class=" text-white text-3xl font-title tracking-wider leading-snug  font-bold mb-2 xl:text-5xl">
                 Mile After mile, We've Got You Covered
             </h2>
-            <p class="text-white text-base mt-4">
-                Proin vehicula eu augue quis gravida. Maecenas quis aliquam diam lore. Etiam hendrerit aliquam ex, vel ultrices turpis consequat quis.
-                Vivamuse ed venenatis mattis faucibus porta purus sit amet auctor.
-            </p>
-            <div class="mt-14  md:slide-right">
+            <ul class="text-white text-base mt-4">
+                <li class="mb-1"><span class="font-bold"><i class="fa-solid fa-caret-right mr-2 text-secondary"></i>Comprehensive Coverage Options :</span> Tailored solutions for individuals and businesses.</li>
+                <li class="mb-1"><span class="font-bold"><i class="fa-solid fa-caret-right mr-2 text-secondary"></i>Fast & Easy Claims Process  :</span> Hassle-free claim settlements with minimal paperwork.</li>
+                <li class="mb-1"><span class="font-bold"><i class="fa-solid fa-caret-right mr-2 text-secondary"></i>Expert Risk Assessment  :</span> Personalized consultations to help you choose the best policy.</li>
+                <li class="mb-1"><span class="font-bold"><i class="fa-solid fa-caret-right mr-2 text-secondary"></i>Dedicated Customer Support  :</span> 24/7 assistance to address your concerns.</li>
+            </ul>
+            <div class="mt-10  md:slide-right">
                 <div class="mt-5">
                     <div class="flex justify-between mb-1">
                         <span class="text-base font-medium text-white">Insurance Product Knowledge</span>
@@ -53,17 +55,17 @@
         <div class="w-full md:w-1/2 flex-col flex justify-center items-center relative zoom-in">
             <div class="w-full 2xl:w-5/6 h-80 mt-8 rounded-xl bg-no-repeat bg-cover relative z-10 " style="background-image: url('{% static 'images/indian-corporate-team.jpg' %}');"></div>
             <div class="flex justify-around gap-6 items-center mt-4">
-                <div class="">
-                    <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients1" class="text-white">0</h3>+</span>
-                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy Clients</span>
+                <div class="text-center">
+                    <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients1" class="text-white">0</h3>K+</span>
+                    <span class="text-lg md:text-2xl text-white font-bold text-center">Policy issued</span>
                 </div>
-                <div class="">
-                    <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients2" class="text-white">0</h3>%</span>
-                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy Clients</span>
+                <div class="text-center">
+                    <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients2" class="text-white">0</h3>K+</span>
+                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy Customers</span>
                 </div>
-                <div class="">
+                <div class="text-center">
                     <span class="flex text-secondary font-bold justify-center text-center text-4xl "><h3 id="happyClients3" class="text-white">0</h3>+</span>
-                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy Clients</span>
+                    <span class="text-lg md:text-2xl text-white font-bold text-center">Happy distributers</span>
                 </div>
 
             </div>
@@ -78,7 +80,7 @@
     <div class="2xl:w-8/12 md:w-11/12 lg:w-11/12 mx-auto bg-secondary  flex flex-col justify-between items-center px-16 py-12 rounded-xl absolute md:left-10 xl:left-12 2xl:left-80 -top-20 md:flex-row gap-6  ">
         <div class="flex items-center gap-3 w-full md:w-1/3">
             <i class="fas fa-phone text-white text-5xl font-bold"></i><h3 class="font-semibold text-xl text-white">Call for More Info<br>
-                <span class="2xl:text-3xl md:text-2xl text-white font-semibold">+123-234-1234</span>
+                <span class="2xl:text-3xl md:text-2xl text-white font-semibold">{{brand.phone}}</span>
             </h3>  
         </div>
         <div class="w-full md:w-1/3">
@@ -87,7 +89,7 @@
             </h3>
         </div>
         <div class="w-full md:w-1/3  flex justify-end items-end">
-            <a href="{% url 'index' %}#Contact">
+            <a href="{% url 'index:index' %}#Contact">
                 <button class="bg-primary rounded-full px-8 py-4 text-center text-white transition duration-100 border-2 border-primary hover:bg-white hover:text-primary font-semibold">Contact us</button>
             </a>
         </div>
@@ -175,9 +177,9 @@
             if (entry.isIntersecting) {
                 // Start the count animation when the element is in view
                 if (entry.target.id === "happyClients1") {
-                    animateCount('happyClients1', 100);
+                    animateCount('happyClients1', 10);
                 } else if (entry.target.id === "happyClients2") {
-                    animateCount('happyClients2', 99);
+                    animateCount('happyClients2', 5);
                 } else if (entry.target.id === "happyClients3") {
                     animateCount('happyClients3', 100);
                 }
