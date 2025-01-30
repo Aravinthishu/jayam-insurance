@@ -7,7 +7,7 @@ class BrandAdmin(admin.ModelAdmin):
     search_fields = ('name', 'googlemap_url', 'phone', 'email')
     list_filter = ('name',)
     ordering = ('name',)
-    fields = ('name', 'googlemap_url', 'logo', 'fevicon', 'phone', 'email', 'address')
+    fields = ('name', 'googlemap_url', 'logo', 'secondary_logo', 'fevicon', 'phone', 'email', 'address')
 
 @admin.register(Social_links)
 class SocialLinksAdmin(admin.ModelAdmin):
