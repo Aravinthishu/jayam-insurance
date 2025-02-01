@@ -5,6 +5,24 @@
     <div class="max-w-screen-xl  mx-auto">
     </div>
 </section> {% endcomment %}
+<div class="text-center h- overflow-hidden p-2 flex justify-center  items-center bg-secondary">
+    <div class="swiper-container-update w-full max-w-xs md:max-w-lg lg:max-w-xl   overflow-hidden">
+
+        <div class="swiper-wrapper">
+            {% for item in updates %}
+            <div class="swiper-slide ">
+                    <p class="text-white font-semibold text-base"><i class="fas fa-bell text-primary "></i>  {{ item.title }} </p>
+            </div>
+            {% empty %}
+            <div class="swiper-slide ">
+                <p class="text-white font-semibold text-base"><i class="fas fa-bell text-primary "></i>  No Updates Available </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
 
 
  <section class="py-10 font-body px-4  md:px-4 2xl:px-0" >
@@ -29,7 +47,7 @@
             <a href="{% url 'index:index' %}#About" class="text-primary hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-secondary md:p-0">About Us</a>
             </li>
             <li>
-            <a href="{% url 'index:index' %}#Insurance" class="text-primary hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-secondary md:p-0">Find</a>
+            <a href="{% url 'index:index' %}#Insurance" class="text-primary hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-secondary md:p-0">Products</a>
             </li>
             <li>
             <a href="{% url 'index:index' %}#Testimonial" class="text-primary hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-secondary md:p-0">Testimonials</a>
@@ -51,3 +69,26 @@
 </div>
 </section>
 <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper-container-update", {
+            slidesPerView: 1,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            effect: "coverflow",
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false,
+            },
+            speed: 800,
+        });
+    });
+</script>

@@ -66,6 +66,12 @@ class PartnerLogo(models.Model):
     def __str__(self):
         return self.logo.url
     
+class ClientLogo(models.Model):
+    logo = models.ImageField(upload_to='client/', null=True, blank=True)
+    
+    def __str__(self):
+        return self.logo.url
+    
 class Certificate(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     year = models.CharField(max_length=200, blank=True, null=True)

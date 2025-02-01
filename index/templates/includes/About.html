@@ -21,16 +21,22 @@
                   class="rounded-full w-12 h-12 mr-4"
                 />
                 <div>
-                  <p class="font-bold text-xl text-secondary" style="font-family: 'Oleo Script Swash Caps', cursive;">{{about.admin_name}}</p>
+                  <p class="font-bold text-xl text-secondary">J.Umapathi</p>
+                  <p class="text-sm text-white">CEO, Founder</p>
+                </div>
+              </div>
+              <div class="flex items-center  md:slide-right">
+                <img
+                  src="{{about.admin_image.url}}"
+                  alt="insurance company"
+                  class="rounded-full w-12 h-12 mr-4"
+                />
+                <div>
+                  <p class="font-bold text-xl text-secondary">{{about.admin_name}}</p>
                   <p class="text-sm text-white">{{about.position}}</p>
                 </div>
               </div>
-              <a
-                href="{% url 'index:index' %}#Insurance"
-                class=" bg-secondary hover:bg-primary text-lg tracking-wider text-white font-semibold py-5 px-14 rounded-full transition xl:ml-auto  md:slide-left"
-              >
-                Find Insurance
-              </a>
+
             </div>
           </div>
         

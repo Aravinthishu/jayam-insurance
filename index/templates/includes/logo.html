@@ -3,10 +3,24 @@
 
 <section class="px-4 2xl:px-0 mt-20 py-16 font-body bg-[#f5bf1c10]" id="Insurance">
     <div class="max-w-screen-xl mx-auto overflow-hidden">
-        <h3 class="text-xl text-center text-primary  font-extrabold">Trusted and funded by more then <span class="text-secondary">100+</span> companies</h3>
-        <div class="swiper-container-logo mt-12">
+        <h3 class="text-xl text-center text-primary  font-extrabold">Trusted and funded by more then <span class="text-secondary">50+</span> companies</h3>
+        <div class="swiper-container-logo mt-8">
             <div class="swiper-wrapper">
                 {% for logo in logos %}
+                <div class="swiper-slide">
+                    <div class="rounded-lg p-4 flex justify-center items-center w-full max-w-[200px] h-[100px]">
+                        <img src="{{ logo.logo.url }}" alt="logo" class="object-contain w-full h-full">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="max-w-screen-xl mx-auto overflow-hidden mt-12">
+        <h3 class="text-xl text-center text-primary  font-extrabold">Our Valued Clients</h3>
+        <div class="swiper-container-logo mt-8">
+            <div class="swiper-wrapper">
+                {% for logo in client_logos %}
                 <div class="swiper-slide">
                     <div class="rounded-lg p-4 flex justify-center items-center w-full max-w-[200px] h-[100px]">
                         <img src="{{ logo.logo.url }}" alt="logo" class="object-contain w-full h-full">

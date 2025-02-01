@@ -4,7 +4,7 @@
         <div class="flex flex-col gap-6 w-full justify-between md:flex-row  " >
             <div class="w-full  flex flex-col">
                 <a href="#" class="flex">
-                    <img src="{{brand.secondary_logo.url}}" alt="Secondary Logo" class="w-32">
+                    <img src="{{brand.secondary_logo.url}}" alt="Secondary Logo" class="w-40">
                 </a>
                 <p class="mt-3 text-base font-medium text-white md:mt-4 lg:mt-6 ">
                     At Jayam Insurance, we are dedicated to safeguarding your future with reliable insurance solutions. From vehicle and health insurance to commercial coverage, we offer policies that provide security and peace of mind. Trust us to protect what matters most.
@@ -45,7 +45,7 @@
                     <i class="fa-solid fa-caret-right mr-2 text-secondary"></i>About Us
                 </a>
                 <a href="{% url 'index:index' %}#Insurance" class="mt-2 text-base  text-white md:mt-3  ">
-                    <i class="fa-solid fa-caret-right mr-2 text-secondary"></i>Insurance
+                    <i class="fa-solid fa-caret-right mr-2 text-secondary"></i>Products
                 </a>
                 <a href="{% url 'index:index' %}#Testimonial" class="mt-2 text-base  text-white md:mt-3  ">
                     <i class="fa-solid fa-caret-right mr-2 text-secondary"></i>Testimonials
@@ -59,14 +59,12 @@
                 <p class=" text-base  text-white   ">
                     {{brand.address}}
                 </p>
+                {% for address in aditional_addresses %}
                 <h3 class="text-lg text-white font-semibold mt-2 mb-1">Branch Office</h3>
                 <p class=" text-base  text-white ">
-                    #247/1 Palani complex, Thirumudivakkam main road, Thirumudivakkam, Chennai -600044.
+                    {{address.address}}
                 </p>
-                <h3 class="text-lg text-white font-semibold mt-2 mb-1">Branch Office</h3>
-                <p class=" text-base  text-white   ">
-                    #116, 1st floor, Methanagar main road, Andalkuppam, Methanagar Kundrathur,Chennai – 600069
-                </p>
+                {% endfor %}
 
             </div>
         </div>

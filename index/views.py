@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import EmailMessage
-from .models import Contact, HeroSection, HeroImage, AboutSection, InsuranceSection, Testimonial, PartnerLogo, Certificate
+from .models import Contact, HeroSection, HeroImage, AboutSection, InsuranceSection, Testimonial, PartnerLogo, Certificate, ClientLogo
 
 def index(request):
     heroslider = HeroSection.objects.first()
@@ -12,6 +12,7 @@ def index(request):
     insurance = InsuranceSection.objects.all()
     testimonials = Testimonial.objects.all()
     logos = PartnerLogo.objects.all()
+    client_logos = ClientLogo.objects.all()
     certificates = Certificate.objects.all()
     
     if request.method == 'POST':
@@ -19,6 +20,7 @@ def index(request):
         email = request.POST.get("email", None)
         phone = request.POST.get("phone")
         insurance_type = request.POST.get("insurance_type")
+        client= request.POST.get("client")
 
         if not insurance_type:
             messages.error(request, "Please select an insurance type.")
@@ -34,6 +36,8 @@ def index(request):
             'email': email,
             'phone': phone,
             'insurance_type': insurance_type,
+            'client': client,
+            
         }
         email_body = render_to_string('contact_email.html', context)
 
@@ -49,6 +53,8 @@ def index(request):
             email_message.content_subtype = 'html'  # Set the email content to HTML
             email_message.send()
             print("Email sent successfully!")
+            print(settings.ADMIN_EMAIL)
+            print(settings.ADMIN_EMAIL2)
             messages.success(request, "Your message has been submitted successfully!")
         except Exception as e:
             print("An error occurred while sending the email:", e)
@@ -64,5 +70,6 @@ def index(request):
         'logos': logos,
         'certificates': certificates,
         'additional_images': additional_images,
+        'client_logos': client_logos,
     }
     return render(request, 'index.html', context)

@@ -1,6 +1,13 @@
 from django.db import models
 
 # Create your models here.
+class Address(models.Model):
+    brand = models.ForeignKey('Brand', related_name='additional_addresses', on_delete=models.CASCADE)  # Link to Brand
+    address = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.brand.name} - {self.address}"
+
 class Brand(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     googlemap_url = models.CharField(max_length=1000, blank=True, null=True)
@@ -21,3 +28,9 @@ class Social_links (models.Model):
     
     def __str__(self):
         return self.name
+    
+class updates(models.Model):
+    title = models.CharField(max_length=500, blank=True, null=True)
+    
+    def __str__(self):
+        return self.title
