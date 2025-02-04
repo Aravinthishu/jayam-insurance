@@ -184,6 +184,8 @@ JAZZMIN_SETTINGS = {
         "index.PartnerLogo": "fas fa-users",
         "index.ClientLogo": "fas fa-users",
         "index.Certificate": "fa fa-certificate",
+        "sitesettings.Address": "fa fa-directions",
+        "sitesettings.updates": "fas fa-sync",
     },
 }
 

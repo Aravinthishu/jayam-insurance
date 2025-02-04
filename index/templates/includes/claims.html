@@ -1,0 +1,59 @@
+{% load static %}
+
+<style>
+    .progress-bar {
+        transition: width 2s ease-out;
+    }
+</style>
+
+<section class="px-4 2xl:px-0 mt-20 font-body bg-cover h-fit pt-16 pb-16 bg-primary "  id="Why-us">
+    <div class="max-w-screen-xl  mx-auto flex flex-col md:flex-row gap-6 z-20  ">
+        <div class="w-full md:w-1/2 relative">
+            <p class="text-lg font-semibold tracking-wide  text-secondary mb-2 flex items-center">
+                <i class="text-secondary fa fa-angle-double-right mr-2"></i>Claims
+            </p>
+            <h2 class=" text-white text-3xl font-title tracking-wider leading-snug  font-bold mb-2 xl:text-5xl">
+                Filing a claim has never been simpler!
+            </h2>
+            <p class="font-body text-white text-base">
+                Easily submit your claim with a hassle-free process. Quick, straightforward, and stress-free—get the support you need without complications. Claim filing made effortless!
+            </p>
+            <div class="w-full 2xl:w-11/12 h-56 mt-8 rounded-xl bg-no-repeat bg-cover relative z-10 zoom-in " style="background-image: url('{% static 'images/insurance-claim.jpg' %}');"></div>
+            <div class=" absolute top-64 md:top-56 right-8  w-1/2 h-48  bg-secondary rounded-lg zoom-in "
+            ></div>
+
+            <a href="{% url 'index:index' %}#Contact">
+                <button class="bg-secondary rounded-full px-8 mt-8 py-4 text-center text-white transition duration-100 border-2 border-secondary hover:bg-white hover:text-secondary font-semibold">Contact us</button>
+            </a>
+            
+        </div>
+        <div class="w-full md:w-1/2 ">
+
+            <p class="text-lg font-semibold tracking-wide  text-secondary mb-2 flex items-center">
+                <i class="text-secondary fa fa-angle-double-right mr-2"></i>How To Claim?
+            </p>
+
+            <div class="flex-col flex justify-center gap-4 mt-6 items-center">
+            {% for claim in claims_step %}
+            <div class="w-full p-4 bg-secondary rounded-lg flex flex-col md:flex-row items-center justify-start gap-6 zoom-in">
+                <!-- Icon -->
+                <div class="p-4 w-20 h-20 bg-primary rounded-full">
+                    <img class="w-full h-full object-contain " src="{{ claim.image.url }}" alt="vision">
+                </div>
+
+                <!-- Title & Description -->
+                <div>
+                    <h2 class="text-xl text-center md:text-start text-white font-semibold md:text-xl lg:text-2xl xl:text-3xl">{{ claim.name }}</h2>
+                    <p class="text-gray-200 text-center md:text-start font-medium text-base mt-3 leading-loose">
+                        {{ claim.description }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+                    
+        </div>
+    </div>
+</section>
+
+

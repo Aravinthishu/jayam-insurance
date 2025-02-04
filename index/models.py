@@ -103,3 +103,11 @@ class Contact(models.Model):
     
     def __str__(self):
         return self.name
+    
+class HowToClaim(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='hoe_to_claim/', null=True, blank=True)
+    
+    def __str__(self):
+        return self.name

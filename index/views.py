@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import EmailMessage
-from .models import Contact, HeroSection, HeroImage, AboutSection, InsuranceSection, Testimonial, PartnerLogo, Certificate, ClientLogo
+from .models import Contact, HeroSection, HeroImage, AboutSection, InsuranceSection, Testimonial, PartnerLogo, Certificate, ClientLogo, HowToClaim
 
 def index(request):
     heroslider = HeroSection.objects.first()
@@ -14,6 +14,7 @@ def index(request):
     logos = PartnerLogo.objects.all()
     client_logos = ClientLogo.objects.all()
     certificates = Certificate.objects.all()
+    claims_step = HowToClaim.objects.all()
     
     if request.method == 'POST':
         name = request.POST.get("name")
@@ -71,5 +72,6 @@ def index(request):
         'certificates': certificates,
         'additional_images': additional_images,
         'client_logos': client_logos,
+        'claims_step':claims_step,
     }
     return render(request, 'index.html', context)
