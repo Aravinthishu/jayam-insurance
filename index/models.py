@@ -36,6 +36,9 @@ class AboutSection(models.Model):
     admin_image = models.ImageField(upload_to='about/', null=True, blank=True)
     admin_name = models.CharField(max_length=200, blank=True, null=True)
     position = models.CharField(max_length=200, blank=True, null=True)
+    admin2_image = models.ImageField(upload_to='about/', null=True, blank=True)
+    admin2_name = models.CharField(max_length=200, blank=True, null=True)
+    admin2_position = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.title
